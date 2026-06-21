@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLN — Sysadmin Toolkit</title>
+    <meta name="description" content="CLN — High-performance Swiss army knife for system administrators" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="app-shell">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">⚡</div>
+                <span class="brand-text">CLN</span>
+                <span class="brand-version">v0.1</span>
+            </div>
+
+            <div class="sidebar-section-label">Modules</div>
+
+            <button class="nav-btn active" data-panel="processes" id="nav-processes">
+                <span class="nav-icon">⚙</span>
+                <span class="nav-label">Processes</span>
+            </button>
+
+            <button class="nav-btn" data-panel="network" id="nav-network">
+                <span class="nav-icon">🌐</span>
+                <span class="nav-label">Network</span>
+            </button>
+
+            <button class="nav-btn" data-panel="scanner" id="nav-scanner">
+                <span class="nav-icon">🔍</span>
+                <span class="nav-label">File Scanner</span>
+            </button>
+
+            <button class="nav-btn" data-panel="remote" id="nav-remote">
+                <span class="nav-icon">💻</span>
+                <span class="nav-label">Remote Admin</span>
+            </button>
+
+            <button class="nav-btn" data-panel="fixes" id="nav-fixes">
+                <span class="nav-icon">🛠</span>
+                <span class="nav-label">Quick Fixes</span>
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+
+            <!-- ===== PROCESSES PANEL ===== -->
+            <section id="panel-processes" class="panel active">
+                <header class="panel-header">
+                    <h1>
+                        <span class="header-icon">⚙</span>
+                        Top Processes
+                    </h1>
+                    <div class="header-actions">
+                        <div class="sort-toggle" id="sort-toggle">
+                            <button class="sort-option active" data-sort="memory">RAM ↓</button>
+                            <button class="sort-option" data-sort="cpu">CPU ↓</button>
+                        </div>
+                        <button class="btn btn-primary" id="btn-refresh-processes">
+                            ↻ Refresh
+                        </button>
+                    </div>
+                </header>
+
+                <div class="data-table-wrapper">
+                    <table class="data-table" id="process-table">
+                        <thead>
+                            <tr>
+                                <th class="col-rank">#</th>
+                                <th class="col-name">Process</th>
+                                <th class="col-pid">PID</th>
+                                <th class="col-memory">Memory</th>
+                                <th class="col-cpu">CPU</th>
+                                <th class="col-action">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="process-table-body">
+                            <!-- Loading skeleton shown initially -->
+                            <tr class="skeleton-row-tr">
+                                <td colspan="6">
+                                    <div class="skeleton-row">
+                                        <div class="skeleton-cell" style="width: 30px;"></div>
+                                        <div class="skeleton-cell" style="flex: 1;"></div>
+                                        <div class="skeleton-cell" style="width: 60px;"></div>
+                                        <div class="skeleton-cell" style="width: 80px;"></div>
+                                        <div class="skeleton-cell" style="width: 60px;"></div>
+                                        <div class="skeleton-cell" style="width: 50px;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="skeleton-row-tr">
+                                <td colspan="6">
+                                    <div class="skeleton-row">
+                                        <div class="skeleton-cell" style="width: 30px;"></div>
+                                        <div class="skeleton-cell" style="flex: 1;"></div>
+                                        <div class="skeleton-cell" style="width: 60px;"></div>
+                                        <div class="skeleton-cell" style="width: 80px;"></div>
+                                        <div class="skeleton-cell" style="width: 60px;"></div>
+                                        <div class="skeleton-cell" style="width: 50px;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="skeleton-row-tr">
+                                <td colspan="6">
+                                    <div class="skeleton-row">
+                                        <div class="skeleton-cell" style="width: 30px;"></div>
+                                        <div class="skeleton-cell" style="flex: 1;"></div>
+                                        <div class="skeleton-cell" style="width: 60px;"></div>
+                                        <div class="skeleton-cell" style="width: 80px;"></div>
+                                        <div class="skeleton-cell" style="width: 60px;"></div>
+                                        <div class="skeleton-cell" style="width: 50px;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="status-bar" id="process-status-bar">
+                    <span class="status-dot loading" id="process-status-dot"></span>
+                    <span id="process-status-text">Initializing…</span>
+                </div>
+            </section>
+
+            <!-- ===== NETWORK PANEL (placeholder) ===== -->
+            <section id="panel-network" class="panel">
+                <div class="panel-placeholder">
+                    <div class="placeholder-icon">🌐</div>
+                    <div class="placeholder-title">Network Diagnostic Hub</div>
+                    <div class="placeholder-text">
+                        IP renewal, network status, traceroute, port scanner, and firewall management.
+                        <br />Coming in Phase 4.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== SCANNER PANEL (placeholder) ===== -->
+            <section id="panel-scanner" class="panel">
+                <div class="panel-placeholder">
+                    <div class="placeholder-icon">🔍</div>
+                    <div class="placeholder-title">File Scanner</div>
+                    <div class="placeholder-text">
+                        Fast file search with heuristic mode — finds associated files, registry keys, and AppData.
+                        <br />Coming in Phase 3.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== REMOTE ADMIN PANEL (placeholder) ===== -->
+            <section id="panel-remote" class="panel">
+                <div class="panel-placeholder">
+                    <div class="placeholder-icon">💻</div>
+                    <div class="placeholder-title">Remote Administration</div>
+                    <div class="placeholder-text">
+                        Execute PowerShell scripts on remote PCs via WinRM.
+                        View active user sessions.
+                        <br />Coming in Phase 5.
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== QUICK FIXES PANEL (placeholder) ===== -->
+            <section id="panel-fixes" class="panel">
+                <div class="panel-placeholder">
+                    <div class="placeholder-icon">🛠</div>
+                    <div class="placeholder-title">System Quick Fixes</div>
+                    <div class="placeholder-text">
+                        Clear temp files, check disk SMART status, parse Event Log for critical errors.
+                        <br />Coming in Phase 2.
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Application scripts -->
+    <script src="main.js"></script>
+</body>
+</html>

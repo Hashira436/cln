@@ -1,0 +1,43 @@
+[package]
+name = "cln"
+version = "0.1.0"
+description = "CLN — Sysadmin Swiss Army Knife"
+authors = ["you"]
+edition = "2021"
+
+[lib]
+name = "cln_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+# --- Tauri core ---
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+
+# --- Serialization ---
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# --- Error handling ---
+thiserror = "2"
+
+# --- Async runtime (required by Tauri + async commands) ---
+tokio = { version = "1", features = ["full"] }
+
+# --- System information (processes, CPU, RAM, disks) ---
+sysinfo = "0.33"
+
+# --- Logging ---
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true
