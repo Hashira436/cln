@@ -1,0 +1,4 @@
+[[permission]]
+identifier = "allow-search-files"
+description = "Enables the streaming file scanner command (Phase 3 scaffold)."
+commands.allow = ["search_files"]

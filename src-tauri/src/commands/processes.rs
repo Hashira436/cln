@@ -38,5 +38,16 @@ pub async fn kill_process(
     let sys = state.sys.read().await;
     monitor::kill_process_by_pid(&sys, pid)
         .map(|_| format!("Process {} terminated successfully.", pid))
-        .map_err(|e| AppError::ProcessNotFound(pid))
+        .map_err(|e| map_kill_error(pid, e))
+}
+
+fn map_kill_error(pid: u32, message: String) -> AppError {
+    let lower = message.to_lowercase();
+    if lower.contains("not found") {
+        AppError::ProcessNotFound(pid)
+    } else if lower.contains("privilege") || lower.contains("permission") || lower.contains("access") {
+        AppError::PermissionDenied(message)
+    } else {
+        AppError::Service(message)
+    }
 }

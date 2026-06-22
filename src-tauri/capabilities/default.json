@@ -8,6 +8,13 @@
     "opener:default",
     "core:event:default",
     "core:event:allow-emit",
-    "core:event:allow-listen"
+    "core:event:allow-listen",
+    "allow-get-top-processes",
+    "allow-kill-process",
+    "allow-get-temp-folder-stats",
+    "allow-clean-temp-files",
+    "allow-get-disk-health",
+    "allow-get-critical-events",
+    "allow-search-files"
   ]
 }

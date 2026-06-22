@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CLN — Sysadmin Toolkit</title>
     <meta name="description" content="CLN — High-performance Swiss army knife for system administrators" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
     <div class="app-shell">
@@ -163,15 +163,78 @@
                 </div>
             </section>
 
-            <!-- ===== QUICK FIXES PANEL (placeholder) ===== -->
+            <!-- ===== QUICK FIXES PANEL ===== -->
             <section id="panel-fixes" class="panel">
-                <div class="panel-placeholder">
-                    <div class="placeholder-icon">🛠</div>
-                    <div class="placeholder-title">System Quick Fixes</div>
-                    <div class="placeholder-text">
-                        Clear temp files, check disk SMART status, parse Event Log for critical errors.
-                        <br />Coming in Phase 2.
+                <header class="panel-header">
+                    <h1>
+                        <span class="header-icon">🛠</span>
+                        System Quick Fixes
+                    </h1>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="btn-refresh-fixes">↻ Refresh</button>
                     </div>
+                </header>
+
+                <div class="fixes-grid">
+                    <section class="card fixes-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Temp File Cleanup</h2>
+                        </div>
+                        <p class="card-copy">
+                            Scans <code>%TEMP%</code>, <code>C:\Windows\Temp</code>, and
+                            <code>SoftwareDistribution\Download</code>.
+                        </p>
+                        <div class="metric-value" id="temp-size-label">Calculating…</div>
+                        <div class="metric-meta" id="temp-paths-label">—</div>
+                        <button class="btn btn-danger" id="btn-clean-temp">Clean Temp Files</button>
+                    </section>
+
+                    <section class="card fixes-card">
+                        <div class="card-header">
+                            <h2 class="card-title">Disk Health</h2>
+                        </div>
+                        <div class="metric-card-grid" id="disk-health-cards">
+                            <div class="skeleton-cell" style="height: 88px;"></div>
+                        </div>
+                        <h3 class="section-subtitle">SMART Status</h3>
+                        <ul class="smart-list" id="smart-status-list">
+                            <li class="smart-item"><span class="badge badge-muted">…</span><span>Loading…</span></li>
+                        </ul>
+                    </section>
+                </div>
+
+                <section class="card fixes-card event-log-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Critical Events (24h)</h2>
+                        <span class="metric-meta">System &amp; Application channels · Level 1–2</span>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <table class="data-table event-log-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Level</th>
+                                    <th>Channel</th>
+                                    <th>Provider</th>
+                                    <th>Message</th>
+                                </tr>
+                            </thead>
+                            <tbody id="event-log-body">
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="skeleton-row">
+                                            <div class="skeleton-cell" style="flex: 1;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <div class="status-bar">
+                    <span class="status-dot loading" id="fixes-status-dot"></span>
+                    <span id="fixes-status-text">Initializing…</span>
                 </div>
             </section>
 
@@ -181,7 +244,7 @@
     <!-- Toast container for notifications -->
     <div class="toast-container" id="toast-container"></div>
 
-    <!-- Application scripts -->
-    <script src="main.js"></script>
+    <!-- Application scripts (ES modules) -->
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>

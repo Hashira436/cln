@@ -1,5 +1,5 @@
 use crate::models::process_info::ProcessInfo;
-use sysinfo::{ProcessRefreshKind, ProcessesToUpdate, System, UpdateKind};
+use sysinfo::{ProcessRefreshKind, ProcessesToUpdate, System};
 
 /// Refreshes system data and returns the top `count` processes sorted by memory usage (descending).
 ///
@@ -9,9 +9,7 @@ pub fn get_top_by_memory(sys: &mut System, count: usize) -> Vec<ProcessInfo> {
     sys.refresh_processes_specifics(
         ProcessesToUpdate::All,
         true,
-        ProcessRefreshKind::new()
-            .with_memory()
-            .with_cpu(),
+        ProcessRefreshKind::nothing().with_memory().with_cpu(),
     );
 
     let mut processes: Vec<ProcessInfo> = sys
@@ -46,9 +44,7 @@ pub fn get_top_by_cpu(sys: &mut System, count: usize) -> Vec<ProcessInfo> {
     sys.refresh_processes_specifics(
         ProcessesToUpdate::All,
         true,
-        ProcessRefreshKind::new()
-            .with_memory()
-            .with_cpu(),
+        ProcessRefreshKind::nothing().with_memory().with_cpu(),
     );
 
     let mut processes: Vec<ProcessInfo> = sys

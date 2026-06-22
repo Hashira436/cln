@@ -1,0 +1,9 @@
+[[permission]]
+identifier = "allow-get-top-processes"
+description = "Enables the get_top_processes command for process monitoring."
+commands.allow = ["get_top_processes"]
+
+[[permission]]
+identifier = "allow-kill-process"
+description = "Enables the kill_process command to terminate processes by PID."
+commands.allow = ["kill_process"]

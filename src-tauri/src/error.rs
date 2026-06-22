@@ -22,6 +22,15 @@ pub enum AppError {
     #[error("Remote execution error: {0}")]
     Remote(String),
 
+    #[error("WMI query error: {0}")]
+    Wmi(String),
+
+    #[error("Event log error: {0}")]
+    EventLog(String),
+
+    #[error("SSH error: {0}")]
+    Ssh(String),
+
     #[error("File operation error: {0}")]
     FileOp(String),
 
@@ -32,8 +41,6 @@ pub enum AppError {
     Internal(String),
 }
 
-// Tauri requires Serialize for error types returned from commands.
-// We serialize the Display representation as a plain string.
 impl Serialize for AppError {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

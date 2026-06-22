@@ -30,6 +30,13 @@ tokio = { version = "1", features = ["full"] }
 # --- System information (processes, CPU, RAM, disks) ---
 sysinfo = "0.33"
 
+[target.'cfg(windows)'.dependencies]
+wmi = "0.14"
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_System_EventLog",
+] }
+
 # --- Logging ---
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }

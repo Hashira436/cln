@@ -1,0 +1,19 @@
+[[permission]]
+identifier = "allow-get-temp-folder-stats"
+description = "Enables scanning temp folders for reclaimable space."
+commands.allow = ["get_temp_folder_stats"]
+
+[[permission]]
+identifier = "allow-clean-temp-files"
+description = "Enables deleting files from temp and update cache folders."
+commands.allow = ["clean_temp_files"]
+
+[[permission]]
+identifier = "allow-get-disk-health"
+description = "Enables disk free-space and SMART health queries."
+commands.allow = ["get_disk_health"]
+
+[[permission]]
+identifier = "allow-get-critical-events"
+description = "Enables querying critical Windows Event Log entries."
+commands.allow = ["get_critical_events"]
