@@ -1,4 +1,9 @@
 [[permission]]
 identifier = "allow-search-files"
-description = "Enables the streaming file scanner command (Phase 3 scaffold)."
+description = "Enables the streaming file scanner command."
 commands.allow = ["search_files"]
+
+[[permission]]
+identifier = "allow-nuke-directory"
+description = "Enables bypassing Windows path limits to nuke a directory."
+commands.allow = ["nuke_directory"]

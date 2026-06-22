@@ -3,6 +3,7 @@
  */
 import { initProcessesPanel } from './modules/processes.js';
 import { initQuickFixesPanel } from './modules/quick-fixes.js';
+import { initScannerPanel } from './modules/scanner.js';
 
 const toastContainer = document.getElementById('toast-container');
 
@@ -49,6 +50,7 @@ function boot() {
     initTabNavigation();
     initProcessesPanel({ showToast, escapeHtml });
     initQuickFixesPanel({ showToast, escapeHtml });
+    initScannerPanel({ showToast, escapeHtml });
 }
 
 boot();

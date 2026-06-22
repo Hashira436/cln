@@ -15,6 +15,7 @@
     "allow-clean-temp-files",
     "allow-get-disk-health",
     "allow-get-critical-events",
-    "allow-search-files"
+    "allow-search-files",
+    "allow-nuke-directory"
   ]
 }

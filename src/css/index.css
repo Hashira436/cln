@@ -289,9 +289,11 @@ body {
 .data-table-wrapper {
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-subtle);
-    overflow: hidden;
+    overflow: auto;
     background: var(--bg-glass);
     backdrop-filter: blur(16px);
+    flex: 1;
+    min-height: 0;
 }
 
 .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
@@ -302,6 +304,10 @@ body {
 }
 
 .data-table th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg-surface);
     padding: var(--space-3) var(--space-4);
     font-size: var(--font-size-xs);
     font-weight: 600;
@@ -666,4 +672,56 @@ body {
 
 .empty-state.compact .empty-text {
     margin-bottom: 0;
+}
+
+/* --- Tree View Scanner --- */
+.tree-row {
+    transition: background var(--transition-fast);
+}
+
+.tree-cell-path {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.tree-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    user-select: none;
+}
+
+.tree-toggle:hover {
+    background: var(--bg-surface-hover);
+    color: var(--text-primary);
+}
+
+.tree-toggle.expanded {
+    transform: rotate(90deg);
+}
+
+.tree-toggle.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tree-label {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tree-label.artificial {
+    color: var(--text-muted);
+    font-style: italic;
 }

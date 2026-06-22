@@ -30,6 +30,10 @@ tokio = { version = "1", features = ["full"] }
 # --- System information (processes, CPU, RAM, disks) ---
 sysinfo = "0.33"
 
+# --- Phase 3: File Scanner ---
+jwalk = "0.8"
+uuid = { version = "1.8", features = ["v4"] }
+
 [target.'cfg(windows)'.dependencies]
 wmi = "0.14"
 windows = { version = "0.58", features = [

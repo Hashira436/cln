@@ -46,6 +46,7 @@ pub fn run() {
             commands::quick_fixes::get_disk_health,
             commands::quick_fixes::get_critical_events,
             commands::file_scanner::search_files,
+            commands::file_scanner::nuke_directory,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -138,15 +138,40 @@
                 </div>
             </section>
 
-            <!-- ===== SCANNER PANEL (placeholder) ===== -->
+            <!-- ===== SCANNER PANEL ===== -->
             <section id="panel-scanner" class="panel">
-                <div class="panel-placeholder">
-                    <div class="placeholder-icon">🔍</div>
-                    <div class="placeholder-title">File Scanner</div>
-                    <div class="placeholder-text">
-                        Fast file search with heuristic mode — finds associated files, registry keys, and AppData.
-                        <br />Coming in Phase 3.
+                <header class="panel-header">
+                    <h1>
+                        <span class="header-icon">🔍</span>
+                        File Scanner
+                    </h1>
+                    <div class="header-actions" style="display: flex; gap: 10px;">
+                        <input type="text" id="scanner-path" class="input-text" placeholder="Path (e.g. C:\Users)" value="C:\Users\Public" style="width: 250px; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--surface-bg); color: var(--text-main);">
+                        <input type="text" id="scanner-query" class="input-text" placeholder="Search query..." style="width: 200px; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--surface-bg); color: var(--text-main);">
+                        <button class="btn btn-primary" id="btn-search-files">Search</button>
                     </div>
+                </header>
+
+                <div class="data-table-wrapper">
+                    <table class="data-table" id="scanner-table">
+                        <thead>
+                            <tr>
+                                <th class="col-path" style="width: 50%;">Path</th>
+                                <th class="col-type" style="width: 10%;">Type</th>
+                                <th class="col-size" style="width: 15%;">Size</th>
+                                <th class="col-reason" style="width: 15%;">Reason</th>
+                                <th class="col-action" style="width: 10%;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scanner-table-body">
+                            <tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">Enter path and query to begin scanning.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="status-bar" id="scanner-status-bar">
+                    <span class="status-dot" id="scanner-status-dot"></span>
+                    <span id="scanner-status-text">Ready</span>
                 </div>
             </section>
 
